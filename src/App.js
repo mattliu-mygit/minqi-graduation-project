@@ -1,13 +1,19 @@
 import './App.css';
-import WellWishes from './Components/WellWishes';
+import OpenEnvelope from './Components/OpenEnvelope';
+import ClosedEnvelope from './Components/ClosedEnvelope';
 
 function App() {
   return (
     <div
       className="App"
-      style={{ width: window.innerWidth, height: window.innerHeight }}
+      style={{
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: 'white',
+      }}
     >
-      <WellWishes />
+      <OpenEnvelope />
+      <ClosedEnvelope />
     </div>
   );
 }
