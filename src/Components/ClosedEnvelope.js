@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import cat from './cat.png';
+import React from 'react';
+import cat from './lion1.png';
 import OpenEnvelope from './OpenEnvelope';
 
 const ClosedEnvelope = (props) => {
-  // useEffect(() => {
-  //   if (props.open !== props.index) {
-  //     setClicked(false);
-  //   }
-  // }, [props]);
   return (
     <>
       {props.open !== props.id ? (
         <a
           onClick={() => {
             console.log('envelope');
-            //setClicked(!clicked);
             console.log(props.open, props.id);
             props.setOpened(props.id);
           }}
@@ -22,10 +16,10 @@ const ClosedEnvelope = (props) => {
           <div
             style={{
               backgroundColor: 'rgb(206, 48, 57)',
-              width: window.innerWidth / 10,
-              height: (3 * window.innerHeight) / 10,
+              width: '14rem',
+              height: '24rem',
               position: 'absolute',
-              top: `${props.verticalLevel * 35 + 20}%`,
+              top: `${props.verticalLevel * 25 + 10}rem`,
               left: `${props.x}%`,
               borderRadius: '8px',
               border: 'solid',
@@ -50,24 +44,24 @@ const ClosedEnvelope = (props) => {
             ></div>
             <img
               src={cat}
-              style={{ position: 'absolute', top: '40%', left: '30%' }}
+              style={{
+                position: 'absolute',
+                bottom: '3rem',
+                left: '0rem',
+                width: '14rem',
+              }}
             ></img>
             <div
               style={{
                 background: 'rgb(255, 235, 100)',
-                // width: '102%',
-                // height: '33.3333%',
                 borderRadius: '0 0 5rem 5rem',
                 border: 'solid',
                 borderColor: 'black',
-                //borderTop:'none',
                 position: 'absolute',
                 top: '0%',
                 left: '-2.5%',
                 width: '102%',
                 height: '18%',
-                // height: '100px',
-                // width: '200px',
               }}
             ></div>
             <div

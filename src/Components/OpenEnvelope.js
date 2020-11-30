@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import cat from './cat.png';
+import cat from './lion1.png';
 
 const OpenEnvelope = (props) => {
   return (
@@ -12,10 +12,10 @@ const OpenEnvelope = (props) => {
       <div
         style={{
           backgroundColor: 'rgb(206, 48, 57)',
-          width: window.innerWidth / 10,
-          height: (3 * window.innerHeight) / 10,
+          width: '14rem',
+          height: '24rem',
           position: 'absolute',
-          top: `${props.verticalLevel * 35 + 20}%`,
+          top: `${props.verticalLevel * 25 + 10}rem`,
           left: `${props.x}%`,
           borderRadius: '8px',
           border: 'solid',
@@ -53,7 +53,12 @@ const OpenEnvelope = (props) => {
         >
           <img
             src={cat}
-            style={{ position: 'absolute', top: '160%', left: '30%' }}
+            style={{
+              position: 'absolute',
+              bottom: '-14.75rem',
+              left: '-1.3rem',
+              width: '14rem',
+            }}
           ></img>
         </div>
         <div

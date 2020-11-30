@@ -3,22 +3,29 @@ import girl from './girl.gif';
 
 const RunningGirl = (props) => {
   useEffect(() => {
-    if (props.x < 69 && props.r) {
+    if (props.x < 80 && props.r) {
       setTimeout(() => props.setX(props.x + 0.05), 1);
     } else if (props.r && props.verticalLevel === 0) {
       props.setVerticalLevel(props.verticalLevel + 1);
       props.setR(false);
-    } else if (props.x > -31 && !props.r) {
+    } else if (props.x > -50 && !props.r) {
       setTimeout(() => props.setX(props.x - 0.05), 1);
+    } else if (
+      !props.r &&
+      props.verticalLevel === 1 &&
+      (props.length * 15) / 100 > 2
+    ) {
+      props.setVerticalLevel(props.verticalLevel + 1);
+      props.setR(true);
     }
   }, [props.x, props.r]);
 
   return (
     <div
       style={{
-        width: '30%',
+        width: '40rem',
         position: 'absolute',
-        top: `${props.verticalLevel * 35 + 20}%`,
+        top: `${props.verticalLevel * 20 + 10}rem`,
         left: `${props.x}%`,
         transform: `scaleX(${props.r ? 1 : -1})`,
       }}
