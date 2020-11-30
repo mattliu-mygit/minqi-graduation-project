@@ -6,33 +6,33 @@ import background from './background.jpeg';
 import sevenStar from './sevenStar.mp3';
 import RunningGirl from './Components/RunningGirl';
 import OpenedMessage from './Components/OpenedMessage';
+import ReactAudioPlayer from 'react-audio-player';
 //import banner from './banner.png';
 
 function App() {
   const [sound, setSound] = useState(true);
+  const [verticalLevel, setVerticalLevel] = useState(0);
+  const [x, setX] = useState(-30);
+  const [envelopes, setEnvelopes] = useState([]);
+  const [lastPushed, setLastPushed] = useState(0);
+  const [r, setR] = useState(true);
+  const [opened, setOpened] = useState(0);
 
   useEffect(() => {
-    const audio = document.getElementById('audio');
-    audio.play();
-  }, []);
-
-  useEffect(() => {
-    const audio = document.getElementById('audio');
-    if (sound) {
-      audio.play();
-    } else {
-      audio.pause();
+    if (
+      !(parseInt(x + 20) % 15) &&
+      x + 20 > 10 &&
+      ((x + 20 > lastPushed + 1 && r) || (x + 20 < lastPushed - 1 && !r))
+    ) {
+      console.log('pushing envelope');
+      setLastPushed(x + 20);
+      envelopes.push([x + 20, verticalLevel, envelopes.length + 1]);
     }
-  }, [sound]);
+    //console.log(envelopes);
+  }, [x, verticalLevel]);
 
   return (
     <>
-      <audio
-        id="audio"
-        autoPlay={true}
-        src={sevenStar}
-        type="audio/mp3"
-      ></audio>
       <div
         className="App"
         style={{
@@ -40,46 +40,65 @@ function App() {
           height: window.innerHeight,
           background: `linear-gradient(rgba(255, 105, 100, 0.7), rgba(222, 193, 0, 0.5)), url(${background})`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '100% 100%',
+          backgroundSize: '100%',
+          backgroundPositionY: 'center',
+        }}
+        onClick={() => {
+          console.log('setting open');
+          setOpened(0);
+        }}
+      ></div>
+      {sound ? (
+        <ReactAudioPlayer
+          src={sevenStar}
+          autoPlay={true}
+          controls={false}
+          loop={true}
+          preload
+        />
+      ) : null}
+      <div
+        style={{
+          fontSize: '300%',
+          textAlign: 'center',
+          color: '#DBA514',
+          backgroundColor: 'rgba(100, 0, 0, 0.5)',
+          //borderRadius: '12px',
+          padding: '2.5%',
+          position: 'absolute',
+          width: '95%',
+          top: '0rem',
+          left: '0rem',
         }}
       >
-        <div
-          style={{
-            fontSize: window.innerWidth / 20,
-            textAlign: 'center',
-            color: '#DBA514',
-            backgroundColor: 'rgba(100, 0, 0, 0.2)',
-            //borderRadius: '12px',
-            padding: '2%',
-          }}
-        >
-          𝐻𝒶𝓅𝓅𝓎 𝒢𝓇𝒶𝒹𝓊𝒶𝓉𝒾𝑜𝓃 𝑀𝒾𝓃𝓆𝒾!
-        </div>
-        {/* <div
-          style={{
-            backgroundColor: 'rgba(100, 0, 0, 0.2)',
-            width: '100%',
-            height: '25%',
-          }}
-        >
-          <img
-            src={banner}
-            style={{
-              width: '80%',
-              height: '60%',
-              objectFit: 'cover',
-              display: 'block',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
-            alt="can'tfind banner"
-          ></img>
-        </div> */}
-        <RunningGirl />
-        <OpenEnvelope />
-        <ClosedEnvelope />
-        <OpenedMessage />
+        𝐻𝒶𝓅𝓅𝓎 𝒢𝓇𝒶𝒹𝓊𝒶𝓉𝒾𝑜𝓃 𝑀𝒾𝓃𝓆𝒾!
       </div>
+      {/* {envelopes.forEach((envelope) => {
+          console.log(envelopes);
+          return envelope;
+        })} */}
+      {envelopes.map((envelope) => {
+        const out = (
+          <ClosedEnvelope
+            x={envelope[0]}
+            verticalLevel={envelope[1]}
+            id={envelope[2]}
+            setOpened={setOpened}
+            open={opened}
+          />
+        );
+        return out;
+      })}
+      <RunningGirl
+        x={x}
+        setX={setX}
+        verticalLevel={verticalLevel}
+        setVerticalLevel={setVerticalLevel}
+        r={r}
+        setR={setR}
+      />
+      {/* </div> */}
+      {opened !== 0 ? <OpenedMessage id={opened} /> : null}
       <button
         onClick={() => {
           setSound(!sound);
