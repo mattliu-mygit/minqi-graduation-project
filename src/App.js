@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import OpenEnvelope from './Components/OpenEnvelope';
 import ClosedEnvelope from './Components/ClosedEnvelope';
@@ -10,8 +10,29 @@ import OpenedMessage from './Components/OpenedMessage';
 
 function App() {
   const [sound, setSound] = useState(true);
+
+  useEffect(() => {
+    const audio = document.getElementById('audio');
+    audio.play();
+  }, []);
+
+  useEffect(() => {
+    const audio = document.getElementById('audio');
+    if (sound) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }, [sound]);
+
   return (
     <>
+      <audio
+        id="audio"
+        autoPlay={true}
+        src={sevenStar}
+        type="audio/mp3"
+      ></audio>
       <div
         className="App"
         style={{
@@ -22,14 +43,6 @@ function App() {
           backgroundSize: '100% 100%',
         }}
       >
-        {sound ? (
-          <audio
-            id="audio"
-            autoPlay={sound}
-            src={sevenStar}
-            type="audio/mp3"
-          ></audio>
-        ) : null}
         <div
           style={{
             fontSize: window.innerWidth / 20,
