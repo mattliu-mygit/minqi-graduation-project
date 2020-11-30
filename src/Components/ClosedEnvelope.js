@@ -14,6 +14,7 @@ const WellWishes = () => {
         borderRadius: '8px',
         border: 'solid',
         borderWidth: '0.3rem',
+        borderTop: 'none',
       }}
     >
       <div
@@ -43,6 +44,7 @@ const WellWishes = () => {
           borderRadius: '0 0 5rem 5rem',
           border: 'solid',
           borderColor: 'black',
+          //borderTop:'none',
           position: 'absolute',
           top: '0%',
           left: '-2.5%',

@@ -10,7 +10,7 @@ const WellWishes = () => {
         height: (3 * window.innerHeight) / 10,
         position: 'absolute',
         top: '50%',
-        left: '50%',
+        left: '5%',
         borderRadius: '8px',
         border: 'solid',
         borderWidth: '0.3rem',
