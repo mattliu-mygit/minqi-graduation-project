@@ -6,13 +6,14 @@ import background from './background.jpeg';
 import sevenStar from './sevenStar.mp3';
 import RunningGirl from './Components/RunningGirl';
 import OpenedMessage from './Components/OpenedMessage';
-import banner from './banner.png';
+//import banner from './banner.png';
 
 function App() {
   const [sound, setSound] = useState(true);
   return (
     <>
       <div
+        className="App"
         style={{
           width: window.innerWidth,
           height: window.innerHeight,
@@ -24,22 +25,11 @@ function App() {
         {sound ? (
           <audio
             id="audio"
-            autoPlay={true}
+            autoPlay={sound}
             src={sevenStar}
             type="audio/mp3"
           ></audio>
         ) : null}
-      </div>
-      <div
-        className="App"
-        style={{
-          width: window.innerWidth,
-          height: window.innerHeight,
-          position: 'absolute',
-          top: '0%',
-          bottom: '0%',
-        }}
-      >
         <div
           style={{
             fontSize: window.innerWidth / 20,
