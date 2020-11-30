@@ -112,6 +112,7 @@ function App() {
               id={envelope[2]}
               setOpened={setOpened}
               open={opened}
+              name={messages[envelope[2] - 1].name}
             />
           );
           return out;

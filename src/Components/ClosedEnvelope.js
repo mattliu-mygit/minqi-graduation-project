@@ -25,6 +25,9 @@ const ClosedEnvelope = (props) => {
               border: 'solid',
               borderWidth: '0.3rem',
               borderTop: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <div
@@ -67,8 +70,6 @@ const ClosedEnvelope = (props) => {
             <div
               style={{
                 background: 'rgb(206, 48, 57)',
-                // width: '102%',
-                // height: '33.3333%',
                 borderRadius: '0 0 4rem 4rem',
                 position: 'absolute',
                 top: '1%',
@@ -77,6 +78,15 @@ const ClosedEnvelope = (props) => {
                 height: '17%',
               }}
             ></div>
+            <div
+              style={{
+                color: 'gold',
+                position: 'absolute',
+                top: '7rem',
+              }}
+            >
+              {props.name}
+            </div>
           </div>
         </a>
       ) : (
