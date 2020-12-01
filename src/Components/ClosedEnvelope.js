@@ -22,7 +22,7 @@ const ClosedEnvelope = (props) => {
               width: '14rem',
               height: '24rem',
               position: 'absolute',
-              top: `${props.verticalLevel * 25 + 10}rem`,
+              top: `${props.verticalLevel * 25 + 11}rem`,
               left: `${props.x}%`,
               borderRadius: '8px',
               border: 'solid',
