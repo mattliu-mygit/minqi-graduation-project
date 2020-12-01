@@ -8,6 +8,8 @@ import RunningGirl from './Components/RunningGirl';
 import OpenedMessage from './Components/OpenedMessage';
 import ReactAudioPlayer from 'react-audio-player';
 import messages from './messages';
+import PhotoReelPage from './Components/PhotoReelPage';
+import EnvelopesPage from './Components/EnvelopesPage';
 //import banner from './banner.png';
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   const [opened, setOpened] = useState(0);
   const [height, setHeight] = useState(window.visualViewport.height);
   const [rBorder, setRBorder] = useState(false);
+  const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
     const calced = ((messages.length + 2) * 11) % window.visualViewport.width;
@@ -94,44 +97,31 @@ function App() {
             textAlign: 'center',
             color: '#DBA514',
             backgroundColor: 'rgba(100, 0, 0, 0.5)',
-            //borderRadius: '12px',
-            padding: '2.5%',
             position: 'absolute',
-            width: '95%',
+            width: '100%',
             top: '0rem',
             left: '0rem',
+            height: '7rem',
+            paddingTop: '2rem',
           }}
         >
           𝐻𝒶𝓅𝓅𝓎 𝒢𝓇𝒶𝒹𝓊𝒶𝓉𝒾𝑜𝓃 𝑀𝒾𝓃𝓆𝒾!
         </div>
-        {envelopes.map((envelope) => {
-          const out = (
-            <ClosedEnvelope
-              x={envelope[0]}
-              verticalLevel={envelope[1]}
-              id={envelope[2]}
-              setOpened={setOpened}
-              open={opened}
-              name={messages[envelope[2] - 1].name}
-            />
-          );
-          return out;
-        })}
-        <RunningGirl
-          x={x}
-          setX={setX}
-          verticalLevel={verticalLevel}
-          setVerticalLevel={setVerticalLevel}
-          r={r}
-          setR={setR}
-          length={messages.length}
-        />
-        {/* </div> */}
-        {opened !== 0 ? (
-          <OpenedMessage
-            id={opened}
-            body={messages[opened - 1]}
-            setOpen={setOpened}
+
+        {pageNum === 1 ? (
+          <PhotoReelPage />
+        ) : pageNum === 2 ? (
+          <EnvelopesPage
+            setOpened={setOpened}
+            x={x}
+            messages={messages}
+            opened={opened}
+            setX={setX}
+            verticalLevel={verticalLevel}
+            setVerticalLevel={setVerticalLevel}
+            r={r}
+            setR={setR}
+            envelopes={envelopes}
           />
         ) : null}
         <button
@@ -142,6 +132,48 @@ function App() {
         >
           Toggle music
         </button>
+        {pageNum === 0 ? (
+          <>
+            <div
+              onClick={() => {
+                setPageNum(1);
+              }}
+              style={{ position: 'absolute', left: 0, top: 0 }}
+            >
+              {'< Photoreel'}
+            </div>
+            <div
+              onClick={() => {
+                setPageNum(2);
+              }}
+              style={{ position: 'absolute', right: 10, top: 0 }}
+            >
+              {'Message Board >'}
+            </div>
+          </>
+        ) : pageNum === 1 ? (
+          <>
+            <div
+              onClick={() => {
+                setPageNum(2);
+              }}
+              style={{ position: 'absolute', right: 10, top: 0 }}
+            >
+              {'Message Board >'}
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              onClick={() => {
+                setPageNum(1);
+              }}
+              style={{ position: 'absolute', left: 10, top: 0 }}
+            >
+              {'< Photoreel'}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
