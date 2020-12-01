@@ -8,6 +8,9 @@ const OpenEnvelope = (props) => {
         console.log('resetting');
         props.setOpened(0);
       }}
+      onMouseLeave={() => {
+        props.setOpened(0);
+      }}
     >
       <div
         style={{

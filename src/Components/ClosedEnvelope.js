@@ -15,9 +15,6 @@ const ClosedEnvelope = (props) => {
           onMouseOver={() => {
             props.setOpened(props.id);
           }}
-          onMouseLeave={() => {
-            props.setOpened(0);
-          }}
         >
           <div
             style={{
