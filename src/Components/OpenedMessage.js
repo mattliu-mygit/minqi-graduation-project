@@ -37,7 +37,7 @@ const OpenedMessage = (props) => {
         <img
           id="img"
           src={props.body.images[0]}
-          style={{ width: '100%', marginTop: '2.5rem' }}
+          style={{ width: '100%' }}
         ></img>
       ) : null}
       <div
