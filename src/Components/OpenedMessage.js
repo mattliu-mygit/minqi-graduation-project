@@ -36,8 +36,8 @@ const OpenedMessage = (props) => {
       {props.body.images.length > 0 ? (
         <img
           id="img"
-          src={props.body.images[1]}
-          style={{ width: '75%', marginTop: '2.5rem' }}
+          src={props.body.images[0]}
+          style={{ width: '100%', marginTop: '2.5rem' }}
         ></img>
       ) : null}
       <div
