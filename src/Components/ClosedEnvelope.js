@@ -12,6 +12,12 @@ const ClosedEnvelope = (props) => {
             console.log(props.open, props.id);
             props.setOpened(props.id);
           }}
+          onMouseOver={() => {
+            props.setOpened(props.id);
+          }}
+          onMouseLeave={() => {
+            props.setOpened(0);
+          }}
         >
           <div
             style={{

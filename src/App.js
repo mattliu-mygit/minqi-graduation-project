@@ -128,7 +128,11 @@ function App() {
         />
         {/* </div> */}
         {opened !== 0 ? (
-          <OpenedMessage id={opened} body={messages[opened - 1]} />
+          <OpenedMessage
+            id={opened}
+            body={messages[opened - 1]}
+            setOpen={setOpened}
+          />
         ) : null}
         <button
           onClick={() => {

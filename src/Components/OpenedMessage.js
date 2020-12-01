@@ -9,7 +9,7 @@ const OpenedMessage = (props) => {
   }, [props.id]);
 
   return (
-    <div
+    <a
       style={{
         width: '35rem',
         //paddingBottom: height,
@@ -32,12 +32,15 @@ const OpenedMessage = (props) => {
         justifyContent: 'center',
         flexWrap: 'wrap',
       }}
+      onClick={() => {
+        props.setOpen(0);
+      }}
     >
       {props.body.images.length > 0 ? (
         <img
           id="img"
           src={props.body.images[0]}
-          style={{ width: '100%' }}
+          style={{ width: '100%', marginTop: '2.5rem' }}
         ></img>
       ) : null}
       <div
@@ -51,7 +54,7 @@ const OpenedMessage = (props) => {
         <div id="message">{props.body.message}</div>
         <p id="name"> - {props.body.name}</p>
       </div>
-    </div>
+    </a>
   );
 };
 
