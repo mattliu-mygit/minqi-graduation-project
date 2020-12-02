@@ -44,15 +44,16 @@ const PhotoReelPage = () => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        zIndex: '1000',
       }}
     >
       <AliceCarousel
         autoPlay
-        autoPlayInterval="1000"
+        autoPlayInterval="3000"
         infinite="true"
         disableButtonsControls="true"
         items={producePhotos()}
-        controlStrategy="responsive"
+        autoPlayStrategy="none"
       ></AliceCarousel>
     </div>
   );

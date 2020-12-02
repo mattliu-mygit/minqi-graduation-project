@@ -9,18 +9,17 @@ const OpenedMessage = (props) => {
   }, [props.id]);
 
   return (
-    <a
+    <div
       style={{
         width: '35rem',
         //paddingBottom: height,
         position: 'absolute',
         top: '25%',
-        // left: '30%',
         backgroundColor: '#EFE5D5',
         border: 'solid',
         borderColor: 'gray',
         fontSize: '1.25rem',
-        zIndex: '100000',
+        zIndex: '10000000000',
         backgroundImage: `url(${watermark})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: '50%',
@@ -41,6 +40,7 @@ const OpenedMessage = (props) => {
           id="img"
           src={props.body.images[0]}
           style={{ width: '100%' }}
+          alt="minqi"
         ></img>
       ) : null}
       <div
@@ -54,7 +54,7 @@ const OpenedMessage = (props) => {
         <div id="message">{props.body.message}</div>
         <p id="name"> - {props.body.name}</p>
       </div>
-    </a>
+    </div>
   );
 };
 

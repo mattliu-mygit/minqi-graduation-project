@@ -6,15 +6,15 @@ const ClosedEnvelope = (props) => {
   return (
     <>
       {props.open !== props.id ? (
-        <a
+        <div
           onClick={() => {
             console.log('envelope');
             console.log(props.open, props.id);
             props.setOpened(props.id);
           }}
-          onMouseOver={() => {
-            props.setOpened(props.id);
-          }}
+          // onMouseOver={() => {
+          //   props.setOpened(props.id);
+          // }}
         >
           <div
             style={{
@@ -91,7 +91,7 @@ const ClosedEnvelope = (props) => {
               {props.name}
             </div>
           </div>
-        </a>
+        </div>
       ) : (
         <>
           <OpenEnvelope

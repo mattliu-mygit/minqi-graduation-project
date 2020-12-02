@@ -5,7 +5,13 @@ import OpenedMessage from './OpenedMessage';
 
 const EnvelopesPage = (props) => {
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       {props.envelopes.map((envelope) => {
         const out = (
           <ClosedEnvelope

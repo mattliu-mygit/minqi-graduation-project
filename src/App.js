@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import OpenEnvelope from './Components/OpenEnvelope';
-import ClosedEnvelope from './Components/ClosedEnvelope';
 import background from './background.jpeg';
 import sevenStar from './sevenStar.mp3';
-import RunningGirl from './Components/RunningGirl';
-import OpenedMessage from './Components/OpenedMessage';
 import ReactAudioPlayer from 'react-audio-player';
 import messages from './messages';
 import PhotoReelPage from './Components/PhotoReelPage';
 import EnvelopesPage from './Components/EnvelopesPage';
+import lab1 from './photos/lab1.jpg';
+import Menu from './Components/Menu';
+import InitPage from './Components/InitPage';
+import photos from './photos';
 //import banner from './banner.png';
 
 function App() {
-  const [sound, setSound] = useState(true);
+  const [sound, setSound] = useState(false);
   const [verticalLevel, setVerticalLevel] = useState(0);
   const [x, setX] = useState(-30);
   const [envelopes, setEnvelopes] = useState([]);
@@ -23,6 +23,7 @@ function App() {
   const [height, setHeight] = useState(window.visualViewport.height);
   const [rBorder, setRBorder] = useState(false);
   const [pageNum, setPageNum] = useState(0);
+  const [passedOver, setPassedOver] = useState(0);
 
   useEffect(() => {
     const calced = ((messages.length + 2) * 11) % window.visualViewport.width;
@@ -49,15 +50,39 @@ function App() {
       setRBorder(true);
       envelopes.push([x - 5, verticalLevel, envelopes.length + 1]);
     }
-    //console.log(envelopes);
+    // console.log(envelopes);
   }, [x, verticalLevel]);
+
+  useEffect(() => {
+    if (sound && pageNum === 0 && passedOver === 0) {
+      setTimeout(() => {
+        if (pageNum === 0) {
+          setPassedOver(1);
+          setPageNum(1);
+        } else {
+          setPassedOver(-1);
+        }
+      }, 3000);
+    } else if (sound && pageNum === 1 && passedOver === 1) {
+      setTimeout(() => {
+        if (pageNum === 1) {
+          setPassedOver(2);
+          setPageNum(2);
+        } else {
+          setPassedOver(-1);
+        }
+      }, 3400 * photos.length);
+    } else if (sound && pageNum === 2) {
+      setPassedOver(-1);
+    }
+  }, [sound, pageNum]);
 
   return (
     <>
       <div
         className="App"
         style={{
-          width: window.visualViewport.width,
+          width: '100%',
           height: height,
           position: 'absolute',
           background: 'transparent',
@@ -70,7 +95,7 @@ function App() {
       <div
         className="App"
         style={{
-          width: window.visualViewport.width,
+          width: '100%',
           height: height,
           background: `linear-gradient(rgba(255, 105, 100, 0.7), rgba(222, 193, 0, 0.5)), url(${background})`,
           backgroundRepeat: 'no-repeat',
@@ -80,6 +105,7 @@ function App() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          padding: '0rem',
         }}
       >
         {sound ? (
@@ -100,14 +126,37 @@ function App() {
             position: 'absolute',
             width: '100%',
             top: '0rem',
-            left: '0rem',
-            height: '7rem',
-            paddingTop: '2rem',
+            height: '9rem',
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '0rem',
           }}
         >
-          𝐻𝒶𝓅𝓅𝓎 𝒢𝓇𝒶𝒹𝓊𝒶𝓉𝒾𝑜𝓃 𝑀𝒾𝓃𝓆𝒾!
+          <img
+            src={lab1}
+            style={{
+              width: '100%',
+              height: '9rem',
+              opacity: '0.4',
+              zIndex: '100',
+              objectFit: 'cover',
+              objectPosition: '50% 40%',
+              position: 'absolute',
+              left: '0rem',
+              top: '0rem',
+            }}
+            alt="lab1"
+          ></img>
+          <div
+            style={{
+              zIndex: '10000',
+              position: 'absolute',
+              paddingTop: '2rem',
+            }}
+          >
+            𝐻𝒶𝓅𝓅𝓎 𝒢𝓇𝒶𝒹𝓊𝒶𝓉𝒾𝑜𝓃 𝑀𝒾𝓃𝓆𝒾!
+          </div>
         </div>
-
         {pageNum === 1 ? (
           <PhotoReelPage />
         ) : pageNum === 2 ? (
@@ -123,57 +172,10 @@ function App() {
             setR={setR}
             envelopes={envelopes}
           />
-        ) : null}
-        <button
-          onClick={() => {
-            setSound(!sound);
-          }}
-          style={{ position: 'absolute', top: 0 }}
-        >
-          Toggle music
-        </button>
-        {pageNum === 0 ? (
-          <>
-            <div
-              onClick={() => {
-                setPageNum(1);
-              }}
-              style={{ position: 'absolute', left: 0, top: 0 }}
-            >
-              {'< Photoreel'}
-            </div>
-            <div
-              onClick={() => {
-                setPageNum(2);
-              }}
-              style={{ position: 'absolute', right: 10, top: 0 }}
-            >
-              {'Message Board >'}
-            </div>
-          </>
-        ) : pageNum === 1 ? (
-          <>
-            <div
-              onClick={() => {
-                setPageNum(2);
-              }}
-              style={{ position: 'absolute', right: 10, top: 0 }}
-            >
-              {'Message Board >'}
-            </div>
-          </>
         ) : (
-          <>
-            <div
-              onClick={() => {
-                setPageNum(1);
-              }}
-              style={{ position: 'absolute', left: 10, top: 0 }}
-            >
-              {'< Photoreel'}
-            </div>
-          </>
+          <InitPage setSound={setSound} sound={sound} />
         )}
+        <Menu setPageNum={setPageNum} pageNum={pageNum} />
       </div>
     </>
   );

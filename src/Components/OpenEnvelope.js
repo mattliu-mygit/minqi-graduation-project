@@ -3,14 +3,14 @@ import cat from './lion1.png';
 
 const OpenEnvelope = (props) => {
   return (
-    <a
+    <div
       onClick={() => {
         console.log('resetting');
         props.setOpened(0);
       }}
-      onMouseLeave={() => {
-        props.setOpened(0);
-      }}
+      // onMouseLeave={() => {
+      //   props.setOpened(0);
+      // }}
     >
       <div
         style={{
@@ -23,6 +23,7 @@ const OpenEnvelope = (props) => {
           borderRadius: '8px',
           border: 'solid',
           borderWidth: '0.3rem',
+          zIndex: '10000000001',
         }}
       >
         <div
@@ -37,6 +38,7 @@ const OpenEnvelope = (props) => {
             borderBottomLeftRadius: '5px',
             borderColor: 'rgb(255, 235, 100)',
             position: 'absolute',
+            zIndex: '10000000001',
             bottom: '0%',
           }}
         ></div>
@@ -51,6 +53,7 @@ const OpenEnvelope = (props) => {
             position: 'absolute',
             top: '-5.5%',
             borderBottomWidth: '0.25rem',
+            zIndex: '10000000001',
             left: '9.5%',
           }}
         >
@@ -62,23 +65,26 @@ const OpenEnvelope = (props) => {
               left: '-1.3rem',
               width: '14rem',
             }}
+            alt="watermark"
           ></img>
         </div>
         <div
           style={{
             background: 'rgb(206, 48, 57)',
-            width: '102%',
+            width: '101.5%',
             height: '33.3333%',
             borderRadius: '50%',
+            zIndex: '10000000000',
             border: 'solid',
             borderColor: 'black',
             position: 'absolute',
             top: '-18%',
-            left: '-2.5%',
+            left: '-2%',
+            borderWidth: '0.2rem',
           }}
         ></div>
       </div>
-    </a>
+    </div>
   );
 };
 

@@ -55,5 +55,11 @@ const messages = [
       'Congratulations, Minqi!!  🎉We will miss you so much. Keep on lion dancing!  🦁',
     images: [CarolPic1, CarolPic2],
   },
+  {
+    name: '𝓜𝓪𝓽𝓽𝓱𝓮𝔀 𝓛𝓲𝓾',
+    message:
+      'Congratulations, Minqi!~ Thank you for always being there when Kevin and I were dying because of intermediate X_X and for guiding me with my resume and interviews <3. I will always cherish these memories deeply. I hope you find great success in California and maybe we can hang out sometime if I ever visit the area!',
+    images: [],
+  },
 ];
 export default messages;
