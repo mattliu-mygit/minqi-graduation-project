@@ -24,6 +24,9 @@ const OpenEnvelope = (props) => {
           border: 'solid',
           borderWidth: '0.3rem',
           zIndex: '10000000001',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <div
@@ -55,8 +58,20 @@ const OpenEnvelope = (props) => {
             borderBottomWidth: '0.25rem',
             zIndex: '10000000001',
             left: '9.5%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
+          <div
+            style={{
+              color: 'gold',
+              position: 'absolute',
+              top: '8.5rem',
+            }}
+          >
+            {props.name}
+          </div>
           <img
             src={cat}
             style={{

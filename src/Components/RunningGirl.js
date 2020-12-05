@@ -4,16 +4,16 @@ import girl from './girl.gif';
 const RunningGirl = (props) => {
   useEffect(() => {
     if (props.x < 80 && props.r) {
-      setTimeout(() => props.setX(props.x + 0.05), 1);
+      setTimeout(() => props.setX(props.x + 0.1), 1);
     } else if (props.r && props.verticalLevel === 0) {
       props.setVerticalLevel(props.verticalLevel + 1);
       props.setR(false);
     } else if (props.x > -50 && !props.r) {
-      setTimeout(() => props.setX(props.x - 0.05), 1);
+      setTimeout(() => props.setX(props.x - 0.1), 1);
     } else if (
       !props.r &&
       props.verticalLevel === 1 &&
-      (props.length * 15) / 100 > 2
+      (props.length * 12) / 100 > 1
     ) {
       props.setVerticalLevel(props.verticalLevel + 1);
       props.setR(true);

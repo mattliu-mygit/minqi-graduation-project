@@ -8,6 +8,12 @@ const OpenedMessage = (props) => {
     setHeight(bod.offsetHeight + 25);
   }, [props.id]);
 
+  const getMessage = () => {
+    const paras = [];
+    props.body.message.forEach((para) => paras.push(<p>{para}</p>));
+    return paras;
+  };
+
   return (
     <div
       style={{
@@ -51,7 +57,7 @@ const OpenedMessage = (props) => {
         }}
         id="messageBod"
       >
-        <div id="message">{props.body.message}</div>
+        <div id="message">{getMessage()}</div>
         <p id="name"> - {props.body.name}</p>
       </div>
     </div>

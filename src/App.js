@@ -26,7 +26,7 @@ function App() {
   const [passedOver, setPassedOver] = useState(0);
 
   useEffect(() => {
-    const calced = ((messages.length + 2) * 11) % window.visualViewport.width;
+    const calced = ((messages.length + 2) * 15) % window.visualViewport.width;
     const convertedHeight =
       ((calced + 1) * 24) / 3 > window.visualViewport.height
         ? (calced * 24) / 3
@@ -37,9 +37,9 @@ function App() {
   useEffect(() => {
     if (
       !(parseInt(x) % 15) &&
-      x + 5 > 0 &&
-      ((parseInt(x) !== lastPushed && r) ||
-        (parseInt(x) !== lastPushed && !r)) &&
+      x > 0 &&
+      ((parseInt(x) !== lastPushed && r && x > 5) ||
+        (parseInt(x) !== lastPushed && !r && x > 5)) &&
       envelopes.length < messages.length
     ) {
       setRBorder(false);

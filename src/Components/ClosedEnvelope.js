@@ -3,15 +3,16 @@ import cat from './lion1.png';
 import OpenEnvelope from './OpenEnvelope';
 
 const ClosedEnvelope = (props) => {
+  const clicked = () => {
+    console.log('envelope');
+    console.log(props.open, props.id);
+    props.setOpened(props.id);
+  };
   return (
     <>
       {props.open !== props.id ? (
         <div
-          onClick={() => {
-            console.log('envelope');
-            console.log(props.open, props.id);
-            props.setOpened(props.id);
-          }}
+          onClick={clicked}
           // onMouseOver={() => {
           //   props.setOpened(props.id);
           // }}
@@ -99,6 +100,7 @@ const ClosedEnvelope = (props) => {
             verticalLevel={props.verticalLevel}
             setOpened={props.setOpened}
             index={props.index}
+            name={props.name}
           />
         </>
       )}
