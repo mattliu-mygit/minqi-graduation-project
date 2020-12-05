@@ -10,7 +10,7 @@ import lab1 from './photos/lab1.jpg';
 import Menu from './Components/Menu';
 import InitPage from './Components/InitPage';
 import photos from './photos';
-//import banner from './banner.png';
+import drumToggle from './Components/drum1.png';
 
 function App() {
   const [sound, setSound] = useState(false);
@@ -176,6 +176,24 @@ function App() {
           <InitPage setSound={setSound} sound={sound} />
         )}
         <Menu setPageNum={setPageNum} pageNum={pageNum} />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          right: '2.5rem',
+          bottom: '2.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontSize: '1.5rem',
+          zIndex: '999999999999',
+        }}
+        onClick={() => {
+          setSound(!sound);
+        }}
+      >
+        <b>Turn {sound ? 'off' : 'on'} sound.</b>
       </div>
     </>
   );
