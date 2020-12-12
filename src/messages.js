@@ -73,7 +73,7 @@ const messages = [
   {
     name: '𝓜𝓪𝓽𝓽𝓱𝓮𝔀 𝓛𝓲𝓾',
     message: [
-      'Congratulations, Minqi!~ Thank you for always being there when Kevin and I were dying because of intermediate X_X and for guiding me with my resume and interviews <3. I will always cherish these memories deeply. I hope you find great success in California and maybe we can hang out sometime if I ever visit the area!',
+      'Congratulations, Minqi!~ Thank you for always being there when Kevin and I were dying because of intermediate X_X and for giving me a guiding hand as I attempted to navigate my way through the CS life <3. I will always cherish these memories deeply. I hope you find great success in California and maybe we can hang out sometime if I ever visit the area!',
     ],
     images: [],
   },
